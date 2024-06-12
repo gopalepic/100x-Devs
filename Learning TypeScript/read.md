@@ -129,7 +129,90 @@ The tsconfig file
 
 
     <Enums >
-    to be contiued ...
+ 
+   Enums(enumerations) are a feature that allows you to define a set of named constants.
 
 
+   eg::-- 
+          WHY ENUM ?? 
 
+          lets says you are playing a game , and you wanted to move the user to all direactios
+          like left , right , up and dows 
+
+           if you try to implement this as a function 
+            you won't be able to do that cause you will be focusing on type 
+            wheather it should be number or string 
+ <example>
+             Should it be a string? (UP , DOWN , LEFT, RIGHT) ?
+              Should it be numbers? (1, 2, 3, 4) ?
+ </example>
+
+ The best way to deal , USE ENUM
+
+
+   enum Direction{
+      Up,
+      Down,
+      Left,
+      Right
+   }
+
+   function SomeValue(ways:Direction){
+      ///.......
+   }
+
+ <Focus>  
+
+    the values of UP , Down , Left , Right are stored as 0 , 1 , 2 , 3
+
+    But if we change the value of first enum components , then all remaning values would be get increments by 1 from the value we provided 
+
+<Example > 
+
+enum Direction {
+    Up=4,
+    Down,
+    Left,
+    Right
+}
+
+console.log(Direction.Right)
+
+ /// ANS => 7
+
+<Enum with string>
+
+
+enum Direction { 
+    Up='Up',
+    Down,
+    Left ,
+    Right ,
+}
+
+console.log(Direction.Left)
+
+ ERROR => Enum member must have initializer.
+   if strings are assigned , all the enum componensts must to be assisgn with some values
+
+ <Generics>
+  
+      Generics enable you to create components that work with any data type while still providing compile-time type safety.
+
+<example>
+
+
+function identify<T>(arg:T):T{
+    return arg;
+}
+
+let output1 = identify<string>("Generic is epic");
+let output2 = identify<Number>(751);
+
+
+</example>
+
+
+ --- Done 
+
+ 
