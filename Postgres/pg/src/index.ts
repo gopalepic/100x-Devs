@@ -1,20 +1,36 @@
 import { Client } from "pg";
+require('dotenv').config();
+async function postgresQuery() {
+    let { CONNECTION_STRING } = process.env;
+    const connectionString = `${CONNECTION_STRING}`
+    const client = new Client({ 
+        connectionString
+     });
+   
 
-const client = new Client({
-    connectionString: "postgresql://neondb_owner:4Kv1XLkHaVqN@ep-tiny-bush-a176y1mm.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
+    try {
+        await client.connect();
+        console.log("Connected to database");
 
-});
+        const Relationships = `
+          SELECT * FROM beepic
+          INNER JOIN epic ON beEPic.collage = epic.collage
+        `;
+ 
 
-
-async function postgresQuery(){
-       await client.connect();
-       const quring = await client.query(`
-        CREATE TABLE users{
-        NAME VARCHAR(50) PRIMARY KEY ,
-        AGE VARCHAR(10) UNIQUE NOT 
-        }
-        `);
-        console.log(quring)
+        const res = await client.query(Relationships);
+        console.log("Joined table data : ");
+        console.log(res.rows);
+        
+        
+    } catch (err) {
+        console.error('Error during process:', err);
+    } finally {
+        await client.end();
+    }
 }
 
 postgresQuery();
+
+
+    
