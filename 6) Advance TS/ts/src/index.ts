@@ -1,3 +1,34 @@
+import express from 'express'
+import z from 'zod'
+const app = express();
+
+/// name age email , by making an object
+
+const userProfileSchema = z.object({
+    name: z.string().min(1,{message:"Name can not be empty"}),
+    age : z.number().min(18,{message:'You must be at least 18 years old '}).Optially(),
+    email : z.string().email({message:'Invalid email format'})
+})
+
+type UserProfileType = z.infer< typeof userProfileSchema>
+
+app.put('/users',(req,res) => {
+    const {success} = userProfileSchema.safeParse(req.body);
+    const updateBody = UserProfileType.body;
+
+    if(!success){
+        res.status(411).json({message:"Enter details"})
+    }
+    res.json({
+        message:'User updated'
+    });
+});
+
+app.listen(3000,()=>{
+   console.log("server is flying ")
+})
+
+
 //{{{{{{{      Pick    }}}}}}}
 
 
