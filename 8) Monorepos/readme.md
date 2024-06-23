@@ -32,4 +32,12 @@ after creating an account in npm
       npm publish --access=public
 
       
+We should never disclose out index.ts file to npm 
+it is good practice to only disclose our index.js file out index.ts file 
+
+how to do that 
+
+make a .npmignore file in your rootdir of your file 
+
+npm the location of your index.TS file which is src in my case 
 

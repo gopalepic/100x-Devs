@@ -6,3 +6,5 @@ ssh -i ".pem file" ubuntu@{yours IP Address}
 
 
 Your are ready to use the development commands in the AWS 
+
+Here we deployed backend on AWS
