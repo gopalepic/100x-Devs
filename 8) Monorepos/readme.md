@@ -41,3 +41,7 @@ make a .npmignore file in your rootdir of your file
 
 npm the location of your index.TS file which is src in my case 
 
+
+<MonoRepos>
+
+Tourbo is a monorepo framework

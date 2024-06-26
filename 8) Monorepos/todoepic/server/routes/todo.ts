@@ -4,7 +4,6 @@ import {Todo} from '../db'
 
 
 const router = express.Router();
-
 router.post('/todos',authenticateJWT,(req,res)=>{
 
 });
