@@ -49,5 +49,13 @@ router.post('/signin', (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 }));
 router.get('/me', middlewares_1.authenticateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const userId = req.headers["userId"];
+    const user = yield db_1.User.findOne({ _id: userId });
+    if (!user) {
+        res.status(404).json({ message: 'User not found' });
+    }
+    else {
+        res.status(201).json({ username: user.username });
+    }
 }));
 exports.default = router;

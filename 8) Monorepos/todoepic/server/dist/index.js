@@ -17,4 +17,4 @@ app.use('/todo', todo_1.default);
 app.listen(port, () => {
     console.log(`server is up at port ${port}`);
 });
-mongoose_1.default.connect();
+mongoose_1.default.connect("mongodb://localhost:27017/todo");

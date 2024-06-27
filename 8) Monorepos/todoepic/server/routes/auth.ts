@@ -41,7 +41,15 @@ router.post('/signin',async(req,res) => {
 })
 
 router.get('/me',authenticateJWT, async (req,res) => {
-    
+    const userId = req.headers["userId"];
+
+    const user = await User.findOne({_id: userId});
+    if(!user){
+        res.status(404).json({message:'User not found'})
+    } else{
+        res.status(201).json({username:user.username});
+    }
+
 })
 
 export default router

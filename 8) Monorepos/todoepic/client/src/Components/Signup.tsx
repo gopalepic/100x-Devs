@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {useSetRecoilState} from "recoil";
-import {authState} from "../store/authState.js";
-
+import {authState} from "../store/authState.ts";
 const Signup = () => {
+
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -17,21 +18,29 @@ const Signup = () => {
         const data = await response.json();
         if (data.token) {
             localStorage.setItem("token", data.token)
-            window.location = "/todos";
+            navigate("/todos") ;
         } else {
             alert("Error while signing up");
         }
     };
 
     return (
-        <div style={{justifyContent: "center", display: "flex", width: "100%"}}>
-            <div>
-                <h2>Signup</h2>
-                <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Username' />
-                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Password' />
-                Already signed up? <Link to="/login">Login</Link>
-                <button onClick={handleSignup}>Signup</button>
-            </div>
+        <div style={{textAlign:'center'}}>
+            <div style={{border:"2px solid" , width:'350px' }}>
+                <h2 >Signup</h2>
+
+                <div style={{display:'flex' , flexDirection:'column'}}>
+
+                <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Username' style={{margin:'10px' ,}} />
+                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Password'style={{margin:'10px'}} /> 
+                
+                Already signed up? 
+                <div>
+                    <Link to="/login">Login</Link>
+                <button onClick={handleSignup}>Signup</button> 
+                </div>
+            </div>  
+             </div>
         </div>
     );
 };
