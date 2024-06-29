@@ -32,7 +32,7 @@ const TodoList = () => {
     }, []);
 
     const addTodo = async () => {
-        const response = await fetch('http://localhost:3000/todo/todos', {
+        const response = await fetch('http://localhost:3000/todo/newtodo', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem("token")}` },
             body: JSON.stringify({ title, description })
@@ -48,7 +48,7 @@ const TodoList = () => {
         setTodos(newTodos);
     };
 
-    const markDone = async (id) => {
+    const markDone = async (_id) => {
         const response = await fetch(`http://localhost:3000/todo/todos/${id}/done`, {
             method: 'PATCH',
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
