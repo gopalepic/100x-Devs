@@ -14,19 +14,14 @@ const pg_1 = require("pg");
 const client = new pg_1.Client({
     connectionString: "postgresql://postgres:yoyoyo@localhost/postgres"
 });
-function createUsersTable() {
+function InsertUserData(id, user_id, city, country, street, pincode) {
     return __awaiter(this, void 0, void 0, function* () {
         yield client.connect();
         const result = yield client.query(`
-        CREATE TABLE epicre (
-            id SERIAL PRIMARY KEY,
-            username VARCHAR(50) UNIQUE NOT NULL,
-            email VARCHAR(255) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL,
-            created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-        );
-    `);
+        INSERT INTO addresses (id , user_id , city , country ,street, pincode )
+        VALUES ($1,$2,$3,$4)
+    `, [id, user_id, city, country, street, pincode]);
         console.log(result);
     });
 }
-createUsersTable();
+InsertUserData(1, 1, 'jaipur', 'India', 'motivihar colonoy ', '302031');

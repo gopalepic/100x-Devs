@@ -79,7 +79,15 @@ client.connect()
 <THE THEORY>
    <Relationships> 
 
- Relations of two or more tables referred as Relationships in SQL
+ Relation of two or more tables referred as Relationships in SQL
 
+ suppose we wanted to store the address of the user , but the address is in written in road , street , colouny and etc 
 
+ then putting all the address in a single table would be soo bad looking 
+
+ so what we do , we make another table called address and in that table , we store the address of the uses 
+
+ both the table hold the some relations between them 
+ 
+![alt text](image.png)
     

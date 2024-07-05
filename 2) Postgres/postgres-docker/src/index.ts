@@ -5,18 +5,13 @@ const client = new Client({
   connectionString: "postgresql://postgres:yoyoyo@localhost/postgres"
 })
 
-async function createUsersTable() {
+async function InsertUserData(user_id:number , city:string , country:string ,street:string, pincode:string) {
     await client.connect()
     const result = await client.query(`
-        CREATE TABLE epicre (
-            id SERIAL PRIMARY KEY,
-            username VARCHAR(50) UNIQUE NOT NULL,
-            email VARCHAR(255) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL,
-            created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-        );
-    `)
+        INSERT INTO addresses (user_id , city , country ,street, pincode )
+        VALUES ($1,$2,$3,$4)
+    ` , [ user_id , city , country , street , pincode])
     console.log(result)
 }
 
-createUsersTable();
+InsertUserData(1,'jaipur','India','motivihar colonoy ' , '302031');
