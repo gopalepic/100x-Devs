@@ -91,3 +91,11 @@ client.connect()
  
 ![alt text](image.png)
     
+
+ FOREIGN KEY (user_id) REFERENCES users(id) 
+
+ Using this Extra line statement Makes the realtionship between both the tables
+
+ user_id is the column of table 2 and id is the colum of table  users 
+
+ 
