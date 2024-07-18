@@ -1,0 +1,21 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+     
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: rgb(129, 230, 230);
+    color: black;
+}
+
+.header_items{
+     display: flex;
+     justify-content: space-between;
+     
+}
