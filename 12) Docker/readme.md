@@ -118,8 +118,7 @@ on 7&8 commands are again running
  ####  Each line of the dockerFile code is know as LAYERS
 
 
-
-
+![alt text](image-4.png)
 
 # Networks and Volumes 
 
@@ -128,5 +127,37 @@ both are concepts that become important when running multiple containers running
 1) Need to persist data across docker restarts
 2) Need to allow containers to talk to each other
 
+
 ## Volumes
 
+A volume is gernally preferred to made because on losing connection with the database , the data on databse may not persist , but volume does...
+
+### creation of a volume 
+
+1)            docker volume create VOL1
+
+### Mount the folder in ongo which actually stores the data in this volume 
+
+1)           docker run -v VOL1:/data/db -p 27017:27017 mongo
+
+
+## Networks 
+
+Powerful feature that allows contaienrs to commnunicate with each other and with the outside world .
+localhost on a docker container means it's own network and not the network of the host machine 
+
+## Building a network
+
+## building the image
+
+1)      docker build -t image_tag .
+
+1)          docker network create myNetworkMongo
+
+## starting backend process along with network
+
+docker run -d -p 3000:3000 -- name backend --network my_network image_tag
+
+## startng mongo along with netwoek and volume attached 
+
+ docker run -d -v volume_database:/data/db --name mongo --network my_custom_network -p 27017:27017 mongo
