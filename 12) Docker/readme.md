@@ -76,8 +76,8 @@ Optimising a dockerFile command is a necessary step
 
 Whenever a DockerFile run the commands
 
- ## It caches the data like 
-
+ It caches the data like 
+{
         [+] Building 2.7s (9/13)                            docker:default
  => [internal] load build definition from Dockerfile          0.0s
  => => transferring dockerfile: 238B                          0.0s 
@@ -90,6 +90,7 @@ Whenever a DockerFile run the commands
  => => transferring context: 238B                             0.1s 
  => [2/8] WORKDIR /usr/src/app                                0.1s 
  => CACHED [3/8] COPY package* . 
+ }
 
 ## above text is the some text from the terminals 
 
@@ -156,8 +157,20 @@ localhost on a docker container means it's own network and not the network of th
 
 ## starting backend process along with network
 
-docker run -d -p 3000:3000 -- name backend --network my_network image_tag
+3)          docker run -d -p 3000:3000 -- name backend --network my_network image_tag
 
 ## startng mongo along with netwoek and volume attached 
 
- docker run -d -v volume_database:/data/db --name mongo --network my_custom_network -p 27017:27017 mongo
+ 4)           docker run -d -v volume_database:/data/db --name mongo --network my_custom_network -p 27017:27017 mongo
+
+
+# Few more docker commands 
+
+## Wanted to executes some commands inside the docker container 
+
+Commans to get inside the docker container
+
+1)              docker exec -it <ContainerID> /bin/bash
+
+
+# Pushing Images to dockerHub 
