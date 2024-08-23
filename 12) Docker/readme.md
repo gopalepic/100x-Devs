@@ -174,3 +174,43 @@ Commans to get inside the docker container
 
 
 # Pushing Images to dockerHub 
+
+
+
+
+# Docker Compose
+
+Docker compose is a tool designed to help you define and run multi=container dockr applications , 
+With composr , you use a YAML fileto configure your application's serevices,
+networks,and volumes. then,  with a single commands you can create and start all the service from your configuration
+
+## if we are not using docker compose 
+
+** Create a network 
+
+1)           docker network create myNetwork
+
+** create a Volume
+
+2)          docker volume create myVolume
+
+** Start mongo container 
+3)         docker run -d -v volume_database:/data/db --name mongo --network mycustom_newtwork  mongo
+
+** Start mongo container
+4)          docker run -d -p 3000:3000 --name backend --network my_custom_newtork backend
+
+After docker-compose
+
+We will be writing some code to the .yaml file , that describes all your containers and volumes 
+
+## Example of Yaml file 
+![alt text](image-5.png)
+
+## Starting the composr 
+
+docker-composr up
+
+## Stopping the compose 
+
+docker-compost down --volumes
